@@ -1,0 +1,21 @@
+services:
+  - type: worker
+    name: director-chat
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: GUILD_ID
+        value: "1541744004188868689"
+      - key: TARGET_CHANNEL_ID
+        value: "1541744004708966442"
+      - key: DEFAULT_REPLY_CHANCE
+        value: "2"
+      - key: DATA_DIR
+        value: "data"
+      - key: LOG_LEVEL
+        value: "INFO"
